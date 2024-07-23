@@ -1,17 +1,34 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-  
-  function handleSubmit(){
-  alert("salom")
-  }
+  const [formData, setFormData] = useState({
+    name: "",
+  });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("salom");
+    alert("hayr");
+  };
   return (
-    <div className='wrappper'>
-     <input type='text' placeholder='Enter todos ?' /><button onChange={handleSubmit} >save</button>
-    </div>
-  )
+    <form className="wrappper" onSubmit={handleSubmit}>
+      <input
+        value={formData.name}
+        onChange={handleChange}
+        type="text"
+        placeholder="Enter todos ?"
+      />
+      <button type="submit" className="btnSave" onChange={handleSubmit}>
+        save
+      </button>
+    </form>
+  );
 }
 
-export default App
+export default App;
