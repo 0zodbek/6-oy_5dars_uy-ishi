@@ -20,12 +20,14 @@ function App() {
 
   const handleDelete = (index) => {
     const updatedP = [...p];
+    console.log(index);
     updatedP.splice(index, 1); 
     setP(updatedP);
   };
 
   return (
     <form className="wrappper" onSubmit={handleSubmit}>
+      <h1>Todo App</h1>
       <div className="inputWrapper">
       <input
         value={inputValue} 

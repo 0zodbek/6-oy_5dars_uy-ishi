@@ -5,8 +5,28 @@ box-sizing: border-box;
 font-family: sans-serif;
 }
 body{
-background-color: #242424;
+  /* background: linear-gradient( to right , #f00, #0f0, #00f, #f0f); */
+  animation: gradient-animation 5s infinite linear;
 }
+
+@keyframes gradient-animation {
+  0% {
+    background: linear-gradient( to right , #f00, #0f0, #00f, #f0f);
+  }
+  25% {
+    background: linear-gradient( to right , #0f0, #00f, #f0f, #f00);
+  }
+  50% {
+    background: linear-gradient( to right , #00f, #f0f, #f00, #0f0);
+  }
+  75% {
+    background: linear-gradient( to right , #f0f, #f00, #0f0, #00f);
+  }
+  100% {
+    background: linear-gradient( to right , #f00, #0f0, #00f, #f0f);
+  }
+}
+
 
 p{
 max-width: 600px;
@@ -21,6 +41,7 @@ white-space: nowrap;
 overflow-x: hidden;
 position: relative;
 transition: all 1s;
+/* animation: gradient-animation 5s infinite linear; */
 }
 
 .btnDelete{
@@ -50,18 +71,26 @@ background-color: #fff;
 margin: 50px auto;
 border-radius: 16px;
 padding-bottom: 15px;
+padding-top: 15px;
 }
+
+h1{
+margin-left: 65px;
+margin-top: 20px;
+}
+
 input{
 width: 400px;
 height: 45px;
 border-radius: 6px;
 background-color: #ffffff;
 outline: none;
-margin: 50px auto;
+margin: 15px auto;
 border:1px solid #232323;
 padding: 15px;
 font-size: 18px;
 margin-left: 70px;
+margin-bottom: 25px;
 }
 .btnSave{
 width: 100px;
