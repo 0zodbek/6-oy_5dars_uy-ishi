@@ -2,31 +2,50 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [formData, setFormData] = useState({
-    name: "",
-  });
+  const [inputValue, setInputValue] = useState('');
+  const [p, setP] = useState([]);
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("salom");
-    alert("hayr");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (inputValue) {
+      setP([...p, inputValue]);
+      setInputValue('');
+    }
   };
+
+  const handleDelete = (index) => {
+    const updatedP = [...p];
+    updatedP.splice(index, 1); 
+    setP(updatedP);
+  };
+
   return (
     <form className="wrappper" onSubmit={handleSubmit}>
+      <div className="inputWrapper">
       <input
-        value={formData.name}
-        onChange={handleChange}
+        value={inputValue} 
+        onChange={handleInputChange}
         type="text"
-        placeholder="Enter todos ?"
+        placeholder="Add your new todo"
       />
       <button type="submit" className="btnSave" onChange={handleSubmit}>
         save
       </button>
+      </div>
+      {p.map((p,index) => (
+          <p key={p}>{p} <button
+          className="btnDelete"
+          onClick={() => handleDelete(index)}
+        >
+          <i className="fa fa-trash"></i>
+        </button> 
+        </p>
+        ))}
     </form>
   );
 }
